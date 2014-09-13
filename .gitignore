@@ -1,0 +1,4 @@
+server/server/settings.py
+*.pyc
+.project
+.pydevproject
