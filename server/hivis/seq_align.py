@@ -25,7 +25,7 @@ from subprocess import call, Popen, PIPE
 
 def input_to_fasta(input_seq, out_name, temp_files):
 	"Saves the input sequence as a fasta file"
-	split_in_seq = input_seq.split(',')
+	split_in_seq = input_seq.split(' ')
 	fast_out = open((temp_files + out_name + '.fa'), 'w')
 	print split_in_seq
 	for line in split_in_seq:
@@ -65,8 +65,9 @@ def aln_to_dict(input_aln_file):
 			
 	return aln_dict
 
-def dict_to_json(proc_dict, info_dict, aln_start):
+def dict_to_json(proc_dict):
 	"Convert a processed python dict to the JSON output"
+	aln_start = "1"
 	json_string = ''
 	headder_string = '{"header":'
 	names_string = '{"names": ['
@@ -82,7 +83,7 @@ def dict_to_json(proc_dict, info_dict, aln_start):
 
 	for key in proc_dict:
 		names_string = names_string + '"' + key + '",'
-		starts_string = starts_string + '"' + info_dict[key] + '",'
+		starts_string = starts_string + '"1",'
 	
 	names_string = names_string[:-1] + '],'
 	starts_string = starts_string[:-1] + '],'
