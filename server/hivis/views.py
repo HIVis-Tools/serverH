@@ -21,6 +21,7 @@ def test_alignment(request):
 	extrainfo = {'reference_seqreference_seqrefere':"1","query_seq":"1","query_seq2":"1"}
 	some_start = "1"
 	out_put_test = dict_to_json(temp_dict, extrainfo, some_start)
+	save_json(dict_to_json(temp_dict, extrainfo, some_start), temp_files, args['name'])
 	return HttpResponse(dict_to_json(temp_dict, extrainfo, some_start))
 	
 

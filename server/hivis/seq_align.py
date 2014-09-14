@@ -71,9 +71,15 @@ def dict_to_json(proc_dict, info_dict, aln_start):
 	headder_string = '{"header":'
 	names_string = '{"names": ['
 	starts_string = '"starts": ['
-	alignment_start_string = '"alignment_start": ' + aln_start + '},'
+	alignment_start_string = '"alignment_start": ' + str(aln_start) + ','
+	
 	alignment_string = ''
 	
+	for key in proc_dict:
+		aln_length = len(proc_dict[key])
+		
+	alignment_stop_string = '"alignment_stop": ' + str(aln_length) + '},'
+
 	for key in proc_dict:
 		names_string = names_string + '"' + key + '",'
 		starts_string = starts_string + '"' + info_dict[key] + '",'
@@ -82,10 +88,7 @@ def dict_to_json(proc_dict, info_dict, aln_start):
 	starts_string = starts_string[:-1] + '],'
 	#print headder_string, names_string, starts_string, alignment_start_string
 	
-	
-	for key in proc_dict:
-		aln_length = len(proc_dict[key])
-	
+
 	i = 0
 	while i < aln_length:
 		align_line = '['
@@ -97,7 +100,11 @@ def dict_to_json(proc_dict, info_dict, aln_start):
 		alignment_string = alignment_string + align_line
 	alignment_string = alignment_string[:-1]
 
-	json_string = headder_string + names_string + starts_string + alignment_start_string + '"alignment": [' + alignment_string + ']}'
+	json_string = headder_string + names_string + starts_string + alignment_start_string + alignment_stop_string + '"alignment": [' + alignment_string + ']}'
 	return json_string
 
-
+def save_json(json_string, temp_files, job_id):
+	"Saves the json string from dict_to_json as a file"
+	out_file = open((temp_files + job_id + '.json'), 'w')
+	out_file.write(json_string)
+	out_file.close()
