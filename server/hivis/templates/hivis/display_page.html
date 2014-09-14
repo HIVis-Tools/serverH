@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<script src="/static/biojs-vis-H.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="/static/H.css" />
+	
+	
+	<script>
+
+	jQuery( document ).ready(function( $ ) {
+		var settings = {
+				width: 1400,
+				height: 400,
+				id: "alignment",
+				target:"#holder"
+			};
+		function getParameterByName(name) {
+		    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+		    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+		        results = regex.exec(location.search);
+		    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+		}
+		var url ="/static/temp/";
+		//var job_id=getParameterByName("job_id");
+		var job_id="{{ resultdata.ref }}";
+
+		$.getJSON( url+job_id+"/"+job_id+".json" , function( data ) {
+			var component = biojs.vis.H.init(settings);
+			component.load(data);
+			component.draw();
+		});
+
+	});
+		
+	</script>
+</head>
+<body>
+
+<div id='holder'></div>
+</body>
+</html>
