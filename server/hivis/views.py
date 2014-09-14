@@ -20,7 +20,7 @@ def test_alignment(request):
 	user_name = user_name.replace(' ','_')
 	job_id = user_name + str(uuid.uuid4())[-6:]
 	
-	temp_files = '/Users/Admin/Dropbox/Programs/tools/HIVis/serverH/serverH/server/hivis/temp/' + job_id + '/'
+	temp_files = '/Users/Admin/Dropbox/Programs/tools/HIVis/serverH/serverH/server/hivis/static/temp/' + job_id + '/'
 	os.system('mkdir ' + temp_files)
 	
 	muscle_path = '/Users/Admin/Dropbox/Programs/tools/HIVis/serverH/serverH/server/hivis/programs/muscle3.8.31_i86darwin64'
@@ -34,7 +34,11 @@ def test_alignment(request):
 	
 	out_put_test = dict_to_json(temp_dict)
 	save_json(dict_to_json(temp_dict), temp_files, job_id)
-	return HttpResponse(request.POST.get('fasta_string', False))
+	#return HttpResponse(job_id)
+	
+	resultdata = {"ref":job_id, "query":2}
+	context = {'resultdata': resultdata}
+	return render(request, "hivis/display_page.html", context)
 	
 
 def input_page(request):

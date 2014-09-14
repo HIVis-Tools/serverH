@@ -7,5 +7,6 @@ urlpatterns = patterns('hivis.views',
     url(r'^alignment$', views.alignment, name='alignment'),  
     url(r'^test_alignment$', views.test_alignment, name='test_alignment'),
     url(r'^input_page$', 'input_page'),   
+    url(r'^display_page$', 'display_page'),   
 )
 
