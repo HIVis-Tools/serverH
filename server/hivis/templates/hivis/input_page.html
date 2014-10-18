@@ -1,23 +1,49 @@
 <html>
 
 	<head>
-
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<style>
+			div.hidden {
+				background: #b977d1;
+			}
+			div.hidden_up {
+				background: #b97777;
+			}			
+		</style>
+		
 	</head>
 
 <body>
 
 	<div>
-
 		<p>Absolute relative sequence enumerator</p>
 		<form action="test_alignment" method="POST">
 		    {%csrf_token%}
-			<table>
-			{{form}}
-			</table>
-			<input type="submit" value="Go"/>
+		    
+		    <div>
+				<table>
+				{{form}}
+				</table>
+			</div>
+			
+			<div class="hidden">
+				<table>
+				{{hidden_form}}
+				</table>
+			</div>
+
+			<div class="hidden_up">
+				<table>
+				
+				</table>
+			</div>
+			
+			<input type="submit" value="Run alignment"/>
 		
 		</form>
+
 	</div>
+
 
 </body>
 </html>
