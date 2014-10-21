@@ -25,13 +25,15 @@
 		var url ="/static/temp/";
 		//var job_id=getParameterByName("job_id");
 		var job_id="{{ resultdata.ref }}";
-
+		var component=null;
 		$.getJSON( url+job_id+"/"+job_id+".json" , function( data ) {
-			var component = biojs.vis.H.init(settings);
+			component = biojs.vis.H.init(settings);
 			component.load(data);
 			component.draw();
 		});
-
+		$("#toggler").click(function(){
+			component.toggleView();
+		});
 	});
 		
 	</script>
@@ -39,5 +41,6 @@
 <body>
 
 <div id='holder'></div>
+<button id="toggler">Toggle view</button>
 </body>
 </html>
