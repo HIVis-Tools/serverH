@@ -32,7 +32,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/ayton/workspace/hivis/venv"
+set -gx VIRTUAL_ENV "/Users/4ndr01d3/Documents/SideProjects/serverH/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
