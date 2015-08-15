@@ -52,3 +52,24 @@ rect.background {
 .select-box {
    width: 95%;
 }
+
+
+.out-box {
+  width: 95%;
+  display: block;
+  border-width: thin;
+}
+
+.username_input {
+  font-weight:300;
+  width: 25%;
+  display: block;
+  clear:both;  
+
+}
+
+.select-box {
+   width: 95%;
+}
+
+
