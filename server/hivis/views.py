@@ -7,7 +7,10 @@ import uuid
 import os
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the HIVIS index.")
+#    return HttpResponse("Hello, world. You're at the HIVIS index.")
+	context = {}
+	return render(request, 'hivis/index.html', context)
+
 
 def alignment(request):
     resultdata = {"ref":1, "query":2}
@@ -54,7 +57,7 @@ def test_alignment(request):
 	return render(request, "hivis/display_page.html", context)
 	
 
-def input_page(request):
+def pretty_input_page(request):
 	newForm = forms.Alignment_form(request)
 	hidden_form = forms.Additional_form(request)
 	hidden_upload_form = forms.UploadFileForm(request)
@@ -62,4 +65,4 @@ def input_page(request):
 	context['form'] = newForm
 	context['hidden_form'] = hidden_form
 	context['hidden_upload_form'] = hidden_upload_form
-	return render(request, "hivis/input_page.html", context)
+	return render(request, "hivis/pretty_input_page.html", context)

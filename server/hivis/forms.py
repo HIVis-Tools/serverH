@@ -14,7 +14,7 @@ class Alignment_form(forms.Form):
 		('vpu', 'Vpu'),
 		('other', 'Other'),
 	)		
-	fasta_string = forms.CharField(widget=forms.Textarea)
+	fasta_string = forms.CharField(widget=forms.Textarea(attrs={'class' : 'form-control'}))
 	user_name = forms.CharField(max_length=24)
 	protein_choice = forms.ChoiceField(choices=HXB2_SEQUENCES)
 
@@ -30,5 +30,5 @@ class Additional_form(forms.Form):
 
 
 class UploadFileForm(forms.Form):
-    title = forms.CharField(max_length=50)
+    title = forms.CharField(max_length=100)
     file = forms.FileField()
