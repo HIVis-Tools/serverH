@@ -11,44 +11,32 @@
 
     <!-- Bootstrap -->
     <link href="../../static/bootstrap-3.3.5-dist/css/formtheme.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/static/H.css" />
 
 </head>	
 
-<style type="text/css"> 
-   body { background: #003366; }
-</style> 
-
 <div class="container auth">
     <h1 class="text-center">BIO TOOLS .za <span>!</span> </h1>
-    <div id="big-form" class="well auth-box">
+     <div id="big-form" class="well auth-box">
       <form action="test_alignment" method="POST">
 	<fieldset>
 	
 
-	<p>-------------</p>
 	{% csrf_token %}
 
 
   <div class="auth-group">
 	<div>
-	 {{form}} 
+	 {{form.as_p}}
         <p><br></p>
   </div>
   </div>
 
-<div class="auth-box">
-        {{hidden_form}}
+<div class="auth-group">
+        {{hidden_form.as_p}}
   </div>
 
 
-<!-- Text input-->
-          <div class="form-group">
-	        <p><br></p>          
-            <div class="form-group">
-              <input id="textinput" name="textinput" placeholder="Username" class="form-control input-md" type="text">
-                <p><br></p>
-            </div>
-          </div>
 
 <!-- File Button --> 
           <div class="form-group">
@@ -71,11 +59,9 @@
 
 		
 	</fieldset>
-      </form>
-    </div>
+	</form>
   </div>
-
-
+  </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

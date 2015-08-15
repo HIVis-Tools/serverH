@@ -2,7 +2,7 @@
   margin-top: 20px;
 }
 body{
-  background:url('http://www.wallpaperup.com/uploads/wallpapers/2012/08/30/12087/3574f899daef41d2f145eba13ff7840f.jpg');
+  background-color:#001F4C; 
   background-size:100% 100%;
   background-attachment: fixed; 
   background-repeat:no-repeat;
@@ -30,16 +30,16 @@ body{
   background-color:#fff;
   max-width:760px;
   margin:0 auto;
-  border:1px solid rgba(255, 255, 255, 0.4);;
+  border:0px solid rgba(255, 255, 255, 0.4);;
   background-color: rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.2);
   margin-top:40px;
   -webkit-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.32);
   -moz-box-shadow:    0px 0px 30px 0px rgba(50, 50, 50, 0.32);
   box-shadow:         0px 0px 30px 0px rgba(50, 50, 50, 0.32);
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
   -webkit-transition: background 1s ease-in-out;
   -moz-transition: background 1s ease-in-out;
   -ms-transition: background 1s ease-in-out;
