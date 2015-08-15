@@ -5,6 +5,7 @@ from seq_align import *
 from hivis import forms
 import uuid
 import os
+from sys import platform as _platform
 
 def index(request):
     return HttpResponse("Hello, world. You're at the HIVIS index.")
@@ -33,8 +34,14 @@ def test_alignment(request):
 	
 	# Variable setting
 	temp_files = './hivis/static/temp/' + job_id + '/'
-	os.system('mkdir ' + temp_files)
-	muscle_path = './hivis/programs/muscle3.8.31_i86darwin64'
+        os.system('mkdir ' + temp_files)
+        
+        if _platform == "linux" or _platform == "linux2":
+            muscle_path = './hivis/programs/muscle3.8.31_i86linux32'
+        elif _platform == "darwin":
+            muscle_path = './hivis/programs/muscle3.8.31_i86darwin64'
+        elif _platform == "win32":
+            muscle_path = './hivis/programs/muscle3.8.31_i86win32.exe'
 	
 	# Write to file
 	fasta_output = open(temp_files + job_id + '.fa', 'w')
