@@ -39,7 +39,7 @@ Installation
 
 * You may need to run the following to apply migrations:
 
-```python manage.py migrate```
+ ```serverH/venv/bin/python serverH/server/manage.py migrate```
 
 Running Django
 -------

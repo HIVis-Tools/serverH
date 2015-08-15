@@ -3,4 +3,5 @@
 .pydevproject
 temp
 venv
-server/db.sqlite3
+db.sqlite3
+.idea/
