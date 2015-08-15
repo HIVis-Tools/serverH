@@ -37,6 +37,10 @@ Installation
  
  ```serverH/venv/bin/pip install -r serverH/requirements.txt```
 
+* You may need to run the following to apply migrations:
+
+```python manage.py migrate```
+
 Running Django
 -------
 Once all of that is done you can run the app thorugh Djago like this:
