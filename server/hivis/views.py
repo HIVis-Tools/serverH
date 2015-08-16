@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext, loader
+from django.core.files.uploadedfile import SimpleUploadedFile
 from seq_align import *
 from hivis import forms
+from .forms import UploadFileForm
 import uuid
 import os
 from sys import platform as _platform
@@ -23,9 +25,22 @@ def test_alignment(request):
 	fasta_string = request.POST.get('fasta_string', False)
 	user_name = request.POST.get('user_name', False)
 	protein_choice = request.POST.get('protein_choice', False)
+	file_up = UploadFileForm(request.POST, request.FILES)
+	file_obj = file_up.save()
+
 	user_name = user_name.replace(' ','_')
 	job_id = user_name + str(uuid.uuid4())[-6:]
+
+	# File upload magic
+	uploaded_filepath = './hivis/static/temp/uploads/' + job_id + '.aln'
+	export_file = open(uploaded_filepath, 'w')
 	
+	for line in request.FILES['filebutton']:
+		export_file.write(line)
+	export_file.close()
+	# End file upload bit
+	
+
 	# Selecting the ref seq
 	if protein_choice != 'other':
 		ref_seq_path = './hivis/static/HXB2_ref_seq/' + protein_choice + '.fasta'
@@ -72,4 +87,5 @@ def pretty_input_page(request):
 	context['form'] = newForm
 	context['hidden_form'] = hidden_form
 	context['hidden_upload_form'] = hidden_upload_form
+
 	return render(request, "hivis/pretty_input_page.html", context)

@@ -33,3 +33,12 @@ class Additional_form(forms.Form):
 class UploadFileForm(forms.Form):
     title = forms.CharField(max_length=100)
     file = forms.FileField()
+    
+
+    def save(self):
+        # We are not overriding the `save` method here because `form.Form` does not have it. 
+        # We just add it for convenience.
+        instance = getattr(self, "instance", None)
+        if instance:
+            instance.save()
+        return instance
